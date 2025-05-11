@@ -3,6 +3,7 @@
 /* --- Add external styles as a component layer --- */
 @layer components {
   /* FIXME: This is caused warning */
+  /* Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0. */
   @import "@webfac/gslider/GSlider.scss";
   @import "@webfac/gslider/paginations/Pagination.scss";
   @import "@webfac/react-common/Styles.scss";
