@@ -5,12 +5,18 @@ function getProductPrice(product) {
   // If invalid product return 0
   if (!product || !product.price) return 0;
   // Assume discount 25% for all product with quantity greater than 5
-  const price = product.quantity && product.quantity >= 5 ? product.price * (1 - DEFAULT_DISCOUNT) : product.price;
+  const price =
+    product.quantity && product.quantity >= 5
+      ? product.price * (1 - DEFAULT_DISCOUNT)
+      : product.price;
   return price;
 }
 
 function getTotalProductPrice(products) {
-  const totalPrice = products.reduce((acc, product) => acc + getProductPrice(product), 0);
+  const totalPrice = products.reduce(
+    (acc, product) => acc + getProductPrice(product),
+    0
+  );
   return totalPrice;
 }
 
@@ -30,7 +36,9 @@ console.log(getTotalProductPrice(products)); // => price: 2750
 // Task 2.2
 function initCaroaselItemClick() {
   // get all carousel items
-  const carouselItemsImage = document.querySelectorAll(".carousel__item .item__image");
+  const carouselItemsImage = document.querySelectorAll(
+    ".carousel__item .item__image img"
+  );
   const modal = document.getElementById("zoom-modal");
   const btnClose = modal.querySelector("#modal-btn-close");
 
@@ -48,7 +56,10 @@ function initCaroaselItemClick() {
 
     // change display to flex for show modal
     modal.style.display = "flex";
-    modal.classList.add("modal--open");
+    //set timeout for wait animation
+    setTimeout(() => {
+      modal.classList.add("modal--open");
+    }, 300);
     // Prevent body scroll
     document.body.classList.add("modal-open");
     // Focus modal when open
@@ -56,7 +67,10 @@ function initCaroaselItemClick() {
   }
 
   function closeModal() {
-    // modal.style.display = "none";
+    //set timeout for wait animation
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 300);
     modal.classList.remove("modal--open");
     document.body.classList.remove("modal-open");
   }
